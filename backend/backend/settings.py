@@ -9,7 +9,7 @@ SECRET_KEY = '''django-insecure-j_89af+30&&4qm*8z9_
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'tubick.hopto.org']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
