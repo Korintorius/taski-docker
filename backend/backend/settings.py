@@ -1,18 +1,21 @@
 import os
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+from django.core.management.utils import get_random_secret_key
+from dotenv import load_dotenv
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR.parent / '.env')
+load_dotenv(BASE_DIR / '.env')
 
 SECRET_KEY = '''django-insecure-j_89af+30&&4qm*8z9_
 (^zz8p4-ho8z_m6ylm0s$h!-p@on1_^'''
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG','false').lower() == 'true'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'tubick.hopto.org']
-
-
-# Application definition
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_TRUSTED_ORIGINS = ['https://tubick.hopto.org']
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
@@ -124,7 +127,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'collected_static'
+STATIC_ROOT = os.getenv('STATIC_ROOT', BASE_DIR / 'collected_static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.getenv('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
