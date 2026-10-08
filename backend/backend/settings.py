@@ -11,7 +11,7 @@ load_dotenv(BASE_DIR / '.env')
 SECRET_KEY = '''django-insecure-j_89af+30&&4qm*8z9_
 (^zz8p4-ho8z_m6ylm0s$h!-p@on1_^'''
 
-DEBUG = os.getenv('DEBUG','false').lower() == 'true'
+DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
