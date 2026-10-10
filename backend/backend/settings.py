@@ -15,7 +15,6 @@ DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#CSRF_TRUSTED_ORIGINS = ['https://tubick.hopto.org']
 CSRF_TRUSTED_ORIGINS = ['https://taski.kittygramproject.jo3.org']
 
 INSTALLED_APPS = [
